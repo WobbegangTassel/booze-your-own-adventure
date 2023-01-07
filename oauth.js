@@ -1,5 +1,6 @@
-const GGOOGLE_CLIENT_ID="990917685938-fnkuvbioqtguh06ib7g0mrogeu261vi5.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID="990917685938-fnkuvbioqtguh06ib7g0mrogeu261vi5.apps.googleusercontent.com";
 const GOOGLE_CLIENT_SECRET="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";
+const MY_REDIRECT_URI = 'https://localhost:8080';
 let fragmentString = location.hash.substring();
 
 // parse query string to see if page request is coming from Oauth 2.0 server.
@@ -22,7 +23,7 @@ function trySampleRequest() {
   let params = JSON.parse(localStorage.getItem('oauth2-test-params'));
   if (params && params['access_token']){
     // TODO: refactor this into axios / fetch
-    let xhr = new XMLHttpRequest():
+    let xhr = new XMLHttpRequest();
     xhr.open('GET',
         'https://www.googleapis.com/drive/v3/about?fields=user&' +
         'access_token=' + params['access_token']);
@@ -71,3 +72,5 @@ function trySampleRequest() {
     document.body.appendChild(form);
     form.submit();
   }
+
+  module.exports = trySampleRequest;
