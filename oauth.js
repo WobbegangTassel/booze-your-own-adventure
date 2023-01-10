@@ -1,6 +1,4 @@
-const GOOGLE_CLIENT_ID="990917685938-fnkuvbioqtguh06ib7g0mrogeu261vi5.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET="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";
-const MY_REDIRECT_URI = 'https://localhost:8080';
+
 let fragmentString = location.hash.substring();
 
 // parse query string to see if page request is coming from Oauth 2.0 server.
