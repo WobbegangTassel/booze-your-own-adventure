@@ -1,4 +1,5 @@
-
+require('dotenv').config();
+const{ GOOGLE_CLIENT_SECRET, GOOGLE_CLIENT_ID, MY_REDIRECT_URI } = process.env;
 let fragmentString = location.hash.substring();
 
 // parse query string to see if page request is coming from Oauth 2.0 server.
@@ -71,4 +72,4 @@ function trySampleRequest() {
     form.submit();
   }
 
-  module.exports = trySampleRequest;
+  export default trySampleRequest;
