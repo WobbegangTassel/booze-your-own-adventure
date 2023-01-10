@@ -1,12 +1,10 @@
-require('dotenv').config();
-// eslint-disable-next-line import/no-extraneous-dependencies
-require('console-stamp')(console, '[HH:MM:ss.l]');
+require('dotenv').config()
+require('console-stamp')(console, '[HH:MM:ss.l]')
 const { Pool } = require('pg');
-
 const { PG_URI } = process.env;
 
 const pool = new Pool({
-  connectionString: PG_URI,
+  connectionString: PG_URI
 });
 
 // Schema for the database can be found below:

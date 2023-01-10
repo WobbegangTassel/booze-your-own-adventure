@@ -1,12 +1,11 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import Homescreen from './Pages/homescreen';
-import StoryPage from './Pages/storypage';
-import AtTheBar from './Pages/atthebar';
-import BarMap from './Pages/map';
+import Homescreen from "./Pages/homescreen";
+import StoryPage from "./Pages/storypage";
+import AtTheBar from "./Pages/atthebar";
+import BarMap from "./Pages/map";
 
 export default function App() {
   // useEffect( ()=> {
