@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "./client/index.js",
-  "proxy": "http://localhost:8080/",
+  "proxy": "https://localhost:8080/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --config webpack.dev.js",

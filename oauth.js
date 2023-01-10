@@ -7,7 +7,7 @@ let fragmentString = location.hash.substring();
 let params = {};
 let regex = /([^&=]+)=([^&]*)/g, m;
 
-while (m = regex.exec(fragmentString)){
+while (m === regex.exec(fragmentString)){
   // populated params object with decoded URI components
   params[decodeURIComponent(m(1))] = decodeURIComponent(m[2]);
 }
