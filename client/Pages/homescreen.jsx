@@ -19,6 +19,7 @@ function Homescreen() {
       <button type="" onClick={() => {}}>
         Resume Saved Adventure
       </button>
+      <p className="text-blue-600">If this text is blue the Tailwind CSS is working</p>
     </div>
   )
 }
