@@ -1,9 +1,6 @@
-//login or signup
-//OAuth
-
 import React, { useState, useEffect } from 'react'
 
-function Homescreen() {
+function Login() {
   //username text field
   //password text field
   //login button
@@ -12,16 +9,19 @@ function Homescreen() {
 
   return (
     <div>
-      <input type="text" id="password" placeholder="zip code" />
+      <input type="text" id="username" placeholder="username" />
+      <input type="text" id="password" placeholder="password" />
       <button type="submit" onClick={() => {}}>
-        Start a New Adventure
+        Log In
       </button>
       <button type="" onClick={() => {}}>
-        Resume Saved Adventure
+        Create Account
       </button>
-      <p className="text-blue-600">If this text is blue the Tailwind CSS is working</p>
+      <button type="" onClick={() => {}}>
+        OaUTH
+      </button>
     </div>
   )
 }
 
-export default Homescreen
+export default Login
