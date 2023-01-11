@@ -1,7 +1,13 @@
 const express = require('express');
 const path = require('path');
+<<<<<<< HEAD
 const fs = require('fs');
 const https = require('https');
+=======
+
+const byoaController = require('./controller');
+
+>>>>>>> dev
 const app = express();
 // const apiRouter = require('./routes/api');
 
@@ -19,6 +25,12 @@ app.use(express.static(path.resolve(__dirname, '../build')));
 app.get('/test', (req, res) => {
     console.log('inside the server')
     return res.sendFile(path.resolve(__dirname, '../index.html'));
+})
+
+// dbTest route
+app.get('/dbTest', byoaController.getUserData, (req, res) => {
+    console.log('dbTest response:', res.locals)
+    res.status(200).json(res.locals);
 })
 
 // catch-all route handler for any requests to an unknown route
