@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 
-function TravelPlan(props) {
+function TravelPlan({ id, setId }) {
+  console.log(id)
+
   return (
     <div>
       <p>A bit of story... Get ready to go!</p>
