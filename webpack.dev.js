@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs');
 const { mergeWithRules } = require('webpack-merge');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const common = require('./webpack.common.js');
@@ -38,10 +37,6 @@ const devConfig = {
     liveReload: false,
     static: { directory: path.resolve(__dirname, 'assets') },
     host: 'localhost',
-    // https: {
-    //   key: fs.readFileSync('localhost-key.pem', 'utf-8'),
-    //   cert: fs.readFileSync('localhost.pem', 'utf-8')
-    // },
     compress: true,
     historyApiFallback: true,
     proxy: {

@@ -1,15 +1,11 @@
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
-// const https = require('https');
 
 const byoaController = require('./controller');
 
 const app = express();
 // const apiRouter = require('./routes/api');
 
-// const key = fs.readFileSync('localhost-key.pem', 'utf-8');
-// const cert = fs.readFileSync('localhost.pem', 'utf-8');
 const port = 3000;
 
 app.use(express.json());
@@ -52,5 +48,3 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
     console.log(`App running on port ${port}.`);
   });
-
-// https.createServer({key, cert}, app).listen(3000);

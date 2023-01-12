@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ProgressPlugin } = require('webpack');
 const path = require('path');
-// const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: { app: './index.js' },
