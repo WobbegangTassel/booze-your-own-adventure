@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const routes = require("./routes");
 
-const byoaController = require('./controller');
+const byoaController = require("./controller");
 
 const app = express();
 // const apiRouter = require('./routes/api');
@@ -24,10 +24,10 @@ app.get("/test", (req, res) => {
 app.use("/api", routes);
 
 // dbTest route
-app.get('/dbTest', byoaController.getUserData, (req, res) => {
-    console.log('dbTest response:', res.locals)
-    res.status(200).json(res.locals);
-})
+app.get("/dbTest", byoaController.getUserData, (req, res) => {
+  console.log("dbTest response:", res.locals);
+  res.status(200).json(res.locals);
+});
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => {

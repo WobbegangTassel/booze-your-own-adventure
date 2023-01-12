@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function StoryPage() {
   return (
@@ -11,7 +12,7 @@ function StoryPage() {
         pirates eagerly set off to find it. Should they stick together or split
         up into groups?
       </p>
-      <button>Choice A</button>
+      <Link to="/go/a">Choice A</Link>
       <button>Choice B</button>
     </div>
   );

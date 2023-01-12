@@ -22,4 +22,21 @@ byoaController.getUserData = (req, res, next) => {
     });
 };
 
+byoaController.getStory = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const sqlStoryQuery = `SELECT * FROM stories WHERE "id" = ${id}`;
+    const storyFromDB = await db.query(sqlStoryQuery);
+    console.log(storyFromDB.rows[0]);
+    res.locals.story = storyFromDB.rows[0];
+    return next();
+  } catch (e) {
+    return next({
+      log: "Error in controller.getStory when querying db",
+      status: 500,
+      message: { e: "An error occured when querying for stories." },
+    });
+  }
+};
+
 module.exports = byoaController;
