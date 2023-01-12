@@ -27,14 +27,35 @@ export default function App() {
 
   // }, [])
 
+  const [storyData, setStoryData] = useState({
+    id: 1,
+    prompt: null,
+    choice_a: null,
+    choice_b: null,
+    choice_a_id: null,
+    choice_b_id: null,
+  });
+
   return (
     <div>
       <Routes>
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
         <Route path="/home" exact element={<Homescreen />} />
-        <Route path="/story" exact element={<StoryPage />} />
-        <Route path="/go/:placeid" exact element={<TravelPlan />} />
+        <Route
+          path="/story"
+          exact
+          element={
+            <StoryPage storyData={storyData} setStoryData={setStoryData} />
+          }
+        />
+        <Route
+          path="/go"
+          exact
+          element={
+            <TravelPlan storyData={storyData} setStoryData={setStoryData} />
+          }
+        />
         <Route path="/map" exact element={<BarMap />} />
         <Route path="/drink" exact element={<AtTheBar />} />
       </Routes>
