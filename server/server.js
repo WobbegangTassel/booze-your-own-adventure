@@ -4,7 +4,7 @@ const path = require('path');
 const byoaController = require('./controller');
 
 const app = express();
-// const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api');
 
 const port = 3000;
 
@@ -13,6 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // * handle requests for static files
 app.use(express.static(path.resolve(__dirname, '../build')));
+
+// Send API requests to apiRouter
+app.use('/api', apiRouter);
 
 // Test route
 app.get('/test', (req, res) => {

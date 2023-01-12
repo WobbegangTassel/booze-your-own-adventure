@@ -28,6 +28,7 @@ export default function App() {
   // }, [])
 
   const [storyData, setStoryData] = useState({
+    id: 1,
     prompt: null,
     choice_a: null,
     choice_b: null,

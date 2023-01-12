@@ -21,4 +21,21 @@ byoaController.getUserData = (req, res, next) => {
     });
 };
 
+byoaController.getStoryData = (req, res, next) => {
+  const sqlQuery = `SELECT * FROM stories WHERE id=${req.params.id};`;
+  
+  db.query(sqlQuery).then(sqlRes =>{
+    console.log('Query response: ', sqlRes.rows);
+    res.locals.storyData = sqlRes.rows[0];
+    // res.locals.eqData.removed_from_service = sqlRes.rows.map(x => x.removed_from_service.slice(0,9));
+    return next();
+  })
+    .catch(e => {
+      next({
+        log: 'byoaController.getUserData error: ' + e,
+        message: {err: 'Failed to get User Data, see server logs'}
+      });
+    });
+};
+
 module.exports = byoaController;
