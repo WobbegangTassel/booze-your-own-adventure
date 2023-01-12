@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import oauth from '../../server/oauth';
 
 function Login() {
   //username text field
@@ -11,7 +12,7 @@ function Login() {
     <div>
       <input type="text" id="username" placeholder="username" />
       <input type="text" id="password" placeholder="password" />
-      <button type="submit" onClick={() => {}}>
+      <button type="submit" onClick={oauth}>
         Log In
       </button>
       <button type="" onClick={() => {}}>
