@@ -4,7 +4,6 @@ import App from './client/App';
 import { BrowserRouter } from "react-router-dom";
 import './client/global.css'
 
-const oauth = require('./oauth').default;
 const container = document.getElementById("root");
 const root = createRoot(container);
 

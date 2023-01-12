@@ -1,18 +1,15 @@
 const express = require('express');
 const path = require('path');
-<<<<<<< HEAD
 const fs = require('fs');
-const https = require('https');
-=======
+// const https = require('https');
 
 const byoaController = require('./controller');
 
->>>>>>> dev
 const app = express();
 // const apiRouter = require('./routes/api');
 
-const key = fs.readFileSync('localhost-key.pem', 'utf-8');
-const cert = fs.readFileSync('localhost.pem', 'utf-8');
+// const key = fs.readFileSync('localhost-key.pem', 'utf-8');
+// const cert = fs.readFileSync('localhost.pem', 'utf-8');
 const port = 3000;
 
 app.use(express.json());
@@ -52,8 +49,8 @@ app.use((err, req, res, next) => {
   });
 
 // Start the server
-// app.listen(port, () => {
-//     console.log(`App running on port ${port}.`);
-//   });
+app.listen(port, () => {
+    console.log(`App running on port ${port}.`);
+  });
 
-https.createServer({key, cert}, app).listen(3000);
+// https.createServer({key, cert}, app).listen(3000);

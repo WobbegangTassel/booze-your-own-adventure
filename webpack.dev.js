@@ -38,14 +38,14 @@ const devConfig = {
     liveReload: false,
     static: { directory: path.resolve(__dirname, 'assets') },
     host: 'localhost',
-    https: {
-      key: fs.readFileSync('localhost-key.pem', 'utf-8'),
-      cert: fs.readFileSync('localhost.pem', 'utf-8')
-    },
+    // https: {
+    //   key: fs.readFileSync('localhost-key.pem', 'utf-8'),
+    //   cert: fs.readFileSync('localhost.pem', 'utf-8')
+    // },
     compress: true,
     historyApiFallback: true,
     proxy: {
-      '/api': 'https://localhost:3000',
+      '/api': 'http://localhost:3000',
   },
   },
 };
