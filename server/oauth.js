@@ -1,6 +1,10 @@
-require('dotenv').config();
+// require('dotenv').config();
 
-const{ GOOGLE_CLIENT_SECRET, GOOGLE_CLIENT_ID, MY_REDIRECT_URI } = process.env;
+// DEV TESTING ONLY
+const GOOGLE_CLIENT_ID='';
+const GOOGLE_CLIENT_SECRET='';
+const MY_REDIRECT_URI='http://localhost:8080/home';
+
 let fragmentString = location.hash.substring();
 
 // parse query string to see if page request is coming from Oauth 2.0 server.
