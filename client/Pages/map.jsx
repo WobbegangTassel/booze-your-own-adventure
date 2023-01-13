@@ -13,14 +13,58 @@ function BarMap({ location, setLocation }) {
   let lat;
   let lng;
 
+  const bars = [
+    {
+      name: "Lord Hobo Cambridge",
+      address: "92 Hampshire St, Cambridge, MA 02139",
+    },
+    {
+      name: "Brick & Mortar",
+      address: "567 Massachusetts Ave, Cambridge, MA 02139",
+    },
+    {
+      name: "The Cantab Lounge",
+      address: "738 Massachusetts Ave, Cambridge, MA 02139",
+    },
+    {
+      name: "The Phoenix Landing",
+      address: "512 Massachusetts Ave, Cambridge, MA 02139",
+    },
+    {
+      name: "730 Tavern",
+      address: "730 Massachusetts Ave, Cambridge, MA 02139",
+    },
+    {
+      name: "The Plough and Stars",
+      address: "912 Massachusetts Ave, Cambridge, MA 02139",
+    },
+    {
+      name: "Blue Owl Rooftop Bar",
+      address: "907 Main St, Cambridge, MA 02139",
+    },
+    {
+      name: "Miracle of Science",
+      address: "321 Massachusetts Ave, Cambridge, MA 02139",
+    },
+    {
+      name: "The Thirsty Ear",
+      address: "Ashdown House, 235 Albany St, Cambridge, MA 02139",
+    },
+    {
+      name: "The Cellar",
+      address: "991 Massachusetts Ave, Cambridge, MA 02138",
+    },
+    { name: "New Republik", address: "1172 Cambridge St, Cambridge, MA 02139" },
+    { name: "R & D Pub", address: "32 Vassar St, Cambridge, MA 02139" },
+    { name: "Parlor Sports", address: "1 Beacon St, Somerville, MA 02143" },
+    { name: "Thirsty Scholar", address: "70 Beacon St, Somerville, MA 02143" },
+  ];
+
+  //find user's current location with geolocation API:
   useEffect(() => {
     const successCallback = (position) => {
       lat = position.coords.latitude;
       lng = position.coords.longitude;
-      setLocation({
-        lat: lat,
-        lng: lng,
-      });
     };
 
     const errorCallback = (error) => {
@@ -33,12 +77,9 @@ function BarMap({ location, setLocation }) {
     );
 
     console.log("position: ", position);
-    console.log(location);
-  }, [location, setLocation]);
+  }, []);
 
-  // const center = location;
-
-  const center = location;
+  const center = { lat: lat, lng: lng };
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
