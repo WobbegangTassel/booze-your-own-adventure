@@ -23,8 +23,9 @@ router.post('/user/:username/:password',
 router.get('/user/:username/:password',
   byoaController.confirmUser,
   (req, res)=> {
-  console.log('user confirmed ', res.locals.userData);
-  res.status(200).json(res.locals.userData);
+    if(typeof res.locals.userData.id === 'number'){
+      return res.status(200).json(res.locals.userData)
+    }  
   }
 );
 
