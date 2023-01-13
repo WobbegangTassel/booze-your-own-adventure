@@ -1,32 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Homescreen from './Pages/homescreen'
-import StoryPage from './Pages/storypage'
-import AtTheBar from './Pages/atthebar'
-import BarMap from './Pages/map'
-import TravelPlan from './Pages/travelPlan'
-import Login from './Pages/login'
-import Signup from './Pages/Signup'
+import Homescreen from "./Pages/homescreen";
+import StoryPage from "./Pages/storypage";
+import AtTheBar from "./Pages/atthebar";
+import BarMap from "./Pages/map";
+import TravelPlan from "./Pages/travelPlan";
+import Login from "./Pages/login";
+import Signup from "./Pages/Signup";
 
 export default function App() {
-  // useEffect( ()=> {
-  //   const showSomething = async () => {
-  //    await fetch("/test") //ask server to serve up all tamas from db
-  //     .then((data) => data.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error:", error);
-  //     });
-  //   }
-
-  //   showSomething();
-
-  // }, [])
-
   const [storyData, setStoryData] = useState({
     id: 1,
     prompt: null,
@@ -34,31 +18,40 @@ export default function App() {
     choice_b: null,
     choice_a_id: null,
     choice_b_id: null,
-  })
+  });
+
+  const [location, setLocation] = useState(null);
+  const [choice, setChoice] = useState(null);
 
   return (
-    <div>
+    <div className="w-screen h-screen bg-gradient-to-t from-blue-dark via-blue to-blue-light p-12">
       <Routes>
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
-        <Route path="/home" exact element={<Homescreen />} />
+        <Route
+          path="/home"
+          exact
+          element={<Homescreen location={location} setLocation={setLocation} />}
+        />
         <Route
           path="/story"
           exact
           element={
-            <StoryPage storyData={storyData} setStoryData={setStoryData} />
+            <StoryPage
+              storyData={storyData}
+              setStoryData={setStoryData}
+              setChoice={setChoice}
+            />
           }
         />
+        <Route path="/go" exact element={<TravelPlan choice={choice} />} />
         <Route
-          path="/go"
+          path="/map"
           exact
-          element={
-            <TravelPlan storyData={storyData} setStoryData={setStoryData} />
-          }
+          element={<BarMap location={location} setLocation={setLocation} />}
         />
-        <Route path="/map" exact element={<BarMap />} />
         <Route path="/drink" exact element={<AtTheBar />} />
       </Routes>
     </div>
-  )
+  );
 }
