@@ -24,7 +24,7 @@ export default function App() {
   const [choice, setChoice] = useState(null);
 
   return (
-    <div>
+    <div className="w-screen h-screen bg-gradient-to-t from-blue-dark via-blue to-blue-light p-12">
       <Routes>
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
