@@ -48,10 +48,14 @@ function StoryPage({ storyData, setStoryData, setChoice }) {
   if (storyData.choice_a === "End of story") {
     return (
       <div className="flex flex-col justify-center align-middle">
-        <p className="self-center">{storyData.prompt}</p>
-        <h3 className="self-center">{storyData.choice_a}</h3>
+        <p className="self-center p-2 py-12 m-12 mt-20 font-display text-6xl flex-shrink-0">
+          {storyData.prompt}
+        </p>
+        <h3 className="self-center p-2 py-12 font-display text-6xl flex-shrink-0">
+          {storyData.choice_a}.
+        </h3>
 
-        <button>
+        <button className="rounded-xl shadow-2xl w-80 bg-brown text-brown-light self-center font-display hover:bg-brown-dark p-5 text-5xl m-5">
           <Link to="/home">Start a new adventure!</Link>
         </button>
         <Outlet />
