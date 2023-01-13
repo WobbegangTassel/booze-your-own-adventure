@@ -29,7 +29,6 @@ byoaController.getStoryData = (req, res, next) => {
     .then((sqlRes) => {
       console.log("Query response: ", sqlRes.rows);
       res.locals.storyData = sqlRes.rows[0];
-      // res.locals.eqData.removed_from_service = sqlRes.rows.map(x => x.removed_from_service.slice(0,9));
       return next();
     })
     .catch((e) => {

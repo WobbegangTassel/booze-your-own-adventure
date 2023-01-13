@@ -12,7 +12,7 @@ const router = express.Router();
 //routes to /home
 
 //routes to /story
-router.get("/story/:id", controller.getStory, (req, res) => {
+router.get("/story/:id", controller.getStoryData, (req, res) => {
   return res.status(200).json(res.locals.story);
 });
 

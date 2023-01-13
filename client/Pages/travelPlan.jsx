@@ -1,42 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
-function TravelPlan() {
-  const { placeid } = useParams();
-
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [placeData, setPlaceData] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      const resp = await fetch(`/api/places/${placeid}`); //or fetch from some other API, maybe google maps...
-
-      console.log(resp);
-      if (!resp.ok) {
-        setError("Error!");
-        return;
-      }
-
-      const json = await resp.json();
-
-      console.log(json);
-      setPlaceData(resp);
-      setLoading(false);
-    })();
-  }, [placeid]);
-
-  if (error) {
-    return <div>error loading page</div>;
-  }
-
-  if (loading) {
-    return <div>loading...</div>;
-  }
+function TravelPlan({ choice }) {
+  console.log(choice);
 
   return (
     <div>
-      <p>A bit of story... Get ready to go!</p>
+      <p>You chose {choice}. That mean's we're headed to a new location!</p>
       <button>
         <Link to="/map">Let's go!</Link>
       </button>

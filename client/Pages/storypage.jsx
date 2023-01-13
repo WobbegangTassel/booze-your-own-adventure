@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function StoryPage({ storyData, setStoryData }) {
+function StoryPage({ storyData, setStoryData, setChoice }) {
   // console.log({storyData})
   let navigate = useNavigate();
 
@@ -35,9 +35,12 @@ function StoryPage({ storyData, setStoryData }) {
     updateStory(storyData.id);
   }, []);
 
-  function handleClick(choice) {
-    updateStory(choice);
-    // navigate('/go')
+  function handleClick(selection_id, selection_text) {
+    updateStory(selection_id);
+    setChoice(selection_text);
+    console.log(selection_text);
+
+    navigate("/go");
   }
 
   return (
@@ -55,7 +58,7 @@ function StoryPage({ storyData, setStoryData }) {
         className="rounded-lg shadow-md w-80 bg-sky-700 text-white m-2 self-center"
         type=""
         onClick={() => {
-          handleClick(storyData.choice_a_id);
+          handleClick(storyData.choice_a_id, storyData.choice_a);
         }}
       >
         {storyData.choice_a}
@@ -64,7 +67,7 @@ function StoryPage({ storyData, setStoryData }) {
         className="rounded-lg shadow-md w-80 bg-sky-700 text-white m-2  self-center"
         type=""
         onClick={() => {
-          handleClick(storyData.choice_b_id);
+          handleClick(storyData.choice_b_id, storyData.choice_b);
         }}
       >
         {storyData.choice_b}

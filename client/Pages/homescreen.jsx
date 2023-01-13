@@ -2,7 +2,6 @@
 //OAuth
 
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 function Homescreen() {
   //username text field
@@ -14,7 +13,9 @@ function Homescreen() {
   return (
     <div>
       <input type="text" id="password" placeholder="zip code" />
-      <Link to="/story">Start a New Adventure</Link>
+      <button type="submit" onClick={() => {}}>
+        Start a New Adventure
+      </button>
       <button type="" onClick={() => {}}>
         Resume Saved Adventure
       </button>

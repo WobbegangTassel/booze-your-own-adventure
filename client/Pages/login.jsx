@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import oauth from '../../server/oauth';
+import React, { useState, useEffect } from "react";
+import oauth from "../../server/oauth";
 
 function Login() {
   //username text field
@@ -22,7 +22,7 @@ function Login() {
         OaUTH
       </button>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

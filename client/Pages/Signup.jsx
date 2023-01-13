@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
 function Signup() {
   //username text field
@@ -13,7 +13,7 @@ function Signup() {
       <input type="text" id="password" placeholder="password" />
       <button onClick={() => {}}>Sign Up!</button>
     </div>
-  )
+  );
 }
 
-export default Signup
+export default Signup;
