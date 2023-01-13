@@ -7,6 +7,15 @@ function Login() {
   //login button
   //login with OAuth button
   //sign up button
+  const [loginText, setLoginText] = useState({username: '', password: ''})
+
+  const handleLoginText = (evt) => {
+    const fieldName = evt.target.id;
+    const tempObj = structuredClone(loginText);
+    tempObj[fieldName] = evt.target.value;
+
+    setLoginText(tempObj);
+  }
 
   return (
     <div className="flex flex-col space-y-5">
