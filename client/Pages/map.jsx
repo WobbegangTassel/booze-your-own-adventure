@@ -67,7 +67,7 @@ function BarMap({ storyData, location, setLocation }) {
   let index = storyData.id;
 
   //which bar should we go to? The bar that corresponds to story index.
-  let nextBaraddress = bars[index].address;
+  let nextBarAddress = bars[index].address;
 
   //find user's current location with geolocation API:
   const [center, setCenter] = useState(null);
@@ -104,12 +104,10 @@ function BarMap({ storyData, location, setLocation }) {
 
       const directionsService = new google.maps.DirectionsService();
 
+      // Guardian conditional
       if (center) {
         const origin = center;
-        const destination = {
-          lat: 36.003927161954906,
-          lng: -78.90099979929735,
-        };
+        const destination = nextBarAddress;
 
         directionsService.route(
           {
