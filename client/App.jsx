@@ -20,7 +20,7 @@ export default function App() {
     choice_b_id: null,
   });
 
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState('92 Hampshire St, Cambridge, MA 02139');
   const [choice, setChoice] = useState(null);
 
   return (
@@ -48,7 +48,13 @@ export default function App() {
         <Route
           path="/map"
           exact
-          element={<BarMap location={location} setLocation={setLocation} />}
+          element={
+            <BarMap
+              storyData={storyData}
+              location={location}
+              setLocation={setLocation}
+            />
+          }
         />
         <Route path="/drink" exact element={<AtTheBar />} />
       </Routes>

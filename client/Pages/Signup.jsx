@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
 function Signup() {
   //username text field
@@ -31,7 +31,7 @@ function Signup() {
         Sign Up!
       </button>
     </div>
-  )
+  );
 }
 
-export default Signup
+export default Signup;
