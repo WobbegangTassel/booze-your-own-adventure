@@ -70,23 +70,29 @@ function BarMap({ storyData, location, setLocation }) {
   let nextBarAddress = bars[index].address;
 
   //find user's current location with geolocation API:
-  const [center, setCenter] = useState(null);
+  // setLocation(bars[0].address);
+  // const [center, setCenter] = useState(null);
 
-  useEffect(() => {
-    const successCallback = (position) => {
-      setCenter({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      });
-      console.log(position);
-    };
+  function handleClick(){
+    setLocation(nextBarAddress);
+  }
 
-    const errorCallback = (error) => {
-      console.log(error);
-    };
+  // Geolocated center useEffect()
+  // useEffect(() => {
+  //   const successCallback = (position) => {
+  //     setCenter({
+  //       lat: position.coords.latitude,
+  //       lng: position.coords.longitude,
+  //     });
+  //     console.log(position);
+  //   };
 
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-  }, []);
+  //   const errorCallback = (error) => {
+  //     console.log(error);
+  //   };
+
+  //   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  // }, []);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -99,14 +105,14 @@ function BarMap({ storyData, location, setLocation }) {
   const onLoad = React.useCallback(
     function callback(map) {
       // This is just an example of getting and using the map instance!!! don't just blindly copy!
-      const bounds = new window.google.maps.LatLngBounds(center);
-      map.fitBounds(bounds);
+      // const bounds = new window.google.maps.LatLngBounds(center);
+      // map.fitBounds(bounds);
 
       const directionsService = new google.maps.DirectionsService();
 
       // Guardian conditional
-      if (center) {
-        const origin = center;
+      if (location) { //change to center if using geolocation API
+        const origin = location; //change to center if using geolocation API
         const destination = nextBarAddress;
 
         directionsService.route(
@@ -129,15 +135,15 @@ function BarMap({ storyData, location, setLocation }) {
 
       setMap(map);
     },
-    [center]
+    [location]
   );
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
 
-  console.log(isLoaded, center);
-  return isLoaded && center ? (
+  console.log(isLoaded, location); //change to center if using geolocation API
+  return isLoaded && location ? ( //change to center if using geolocation API
     <div className="flex flex-col justify-center align-middle m-12">
       <p className="self-center justify-center p-2 m-5 flex-shrink-0 text-4xl font-body text-brown-dark">
         You are looking at a map!
@@ -145,17 +151,20 @@ function BarMap({ storyData, location, setLocation }) {
       <div className="self-center">
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={center}
+          // center={center}
           zoom={16}
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
-          {/* Child components, such as markers, info windows, etc. */}
-          {directions && <DirectionsRenderer directions={directions} />}
+          {/* You can add more child components, such as markers, info windows, etc. */}
+          {directions&& <DirectionsRenderer directions={directions} />}
         </GoogleMap>
       </div>
 
-      <button className="p-3 flex-shrink-0 my-6 self-center font-button text-blue-light w-96 min-w-min text-2xl rounded-lg bg-brown  hover:bg-brown-light hover:text-brown-dark">
+      <button 
+        className="p-3 flex-shrink-0 my-6 self-center font-button text-blue-light w-96 min-w-min text-2xl rounded-lg bg-brown  hover:bg-brown-light hover:text-brown-dark"
+        onClick={handleClick}
+      >
         <Link to="/drink">I'm here!</Link>
       </button>
       <Outlet />

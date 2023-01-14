@@ -20,7 +20,7 @@ export default function App() {
     choice_b_id: null,
   });
 
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState('92 Hampshire St, Cambridge, MA 02139');
   const [choice, setChoice] = useState(null);
 
   return (
