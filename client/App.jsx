@@ -48,7 +48,13 @@ export default function App() {
         <Route
           path="/map"
           exact
-          element={<BarMap location={location} setLocation={setLocation} />}
+          element={
+            <BarMap
+              storyData={storyData}
+              location={location}
+              setLocation={setLocation}
+            />
+          }
         />
         <Route path="/drink" exact element={<AtTheBar />} />
       </Routes>
