@@ -44,6 +44,18 @@ function Login() {
       })
       .catch((err) => console.log("User login fetch ERROR: ", err));
   }
+  const handleDeleteAccount = async (evt) => {
+    await fetch(`/api/user/${loginText.username}/${loginText.password}`,  { method: 'DELETE'})
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setLoginText({username: '', password: ''});
+        // if(typeof data.id === 'number') {
+        //   navigate('/home');
+        // } else navigate('/login');
+      })
+      .catch((err) => console.log("User login fetch ERROR: ", err));
+  }
 
   return (
     <div className="flex flex-col space-10 rounded-lg h-full w-full border-double border-4 border-brown-dark">
@@ -84,6 +96,13 @@ function Login() {
         onClick={oauth}
       >
         LOG IN WITH GOOGLE
+      </button>
+      <button
+        className="p-3 self-center w-96 min-w-min my-6 mb-12 text-2xl font-button flex-shrink-0 text-blue-light rounded-lg bg-brown  hover:bg-brown-light hover:text-brown-dark"
+        type=""
+        onClick={handleDeleteAccount}
+      >
+        DELETE ACCOUNT
       </button>
     </div>
   )

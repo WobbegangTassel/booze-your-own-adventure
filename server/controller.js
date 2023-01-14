@@ -73,6 +73,23 @@ byoaController.confirmUser = (req, res, next) =>{
   });
 };
 
+byoaController.deleteUser = (req, res, next) => {
+  const sqlQuery = `DELETE FROM users WHERE username='${req.params.username}'
+  AND password='${req.params.password}';`
+
+  db.query(sqlQuery).then(sqlRes => {
+    console.log('Query response: ', sqlRes.rows);
+    res.locals.userData = sqlRes.rows[0];
+    return next();
+  })
+  .catch(e => {
+    next({
+      log: 'byoaController.deleteUser error: ' + e,
+      message: {err: 'Failed to confirm User and password, see server logs'} 
+    });
+  });
+};
+
 // byoaController.updateSessionData = (req, res, next) =>{
 //   const sqlQuery = `UPDATE users SET session_data = '${req.params.sessionData}' WHERE  `
 // }
