@@ -101,8 +101,10 @@ function BarMap({ location, setLocation }) {
   }, []);
 
   return isLoaded ? (
-    <div>
-      <p>You are looking at a map!</p>
+    <div className="flex flex-col justify-center align-middle m-12">
+      <p className="self-center justify-center p-2 m-5 flex-shrink-0 text-4xl font-body text-brown-dark">
+        You are looking at a map!
+      </p>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -113,7 +115,10 @@ function BarMap({ location, setLocation }) {
         {/* Child components, such as markers, info windows, etc. */}
         <></>
       </GoogleMap>
-      <button className="rounded-xl shadow-2xl w-80 bg-brown text-brown-light self-center font-display hover:bg-brown-dark p-5 text-5xl m-5">
+      <button
+        className="rounded-xl shadow-2xl w-80 bg-brown text-brown-light self-center font-display hover:bg-brown-dark p-5 text-5xl m-5"
+        className="p-3 flex-shrink-0 my-6 self-center font-button text-blue-light w-96 min-w-min text-2xl rounded-lg bg-brown  hover:bg-brown-light hover:text-brown-dark"
+      >
         <Link to="/drink">I'm here!</Link>
       </button>
       <Outlet />

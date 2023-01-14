@@ -12,4 +12,21 @@ router.get('/story/:id',
   }
 );
 
+router.post('/user/:username/:password',
+  byoaController.addUser,
+  (req, res) => {
+  console.log('user added in apiRouter ', res.locals.userData);
+  res.status(200).json(res.locals.userData);
+  }
+);
+
+router.get('/user/:username/:password',
+  byoaController.confirmUser,
+  (req, res)=> {
+    if(typeof res.locals.userData.id === 'number'){
+      return res.status(200).json(res.locals.userData)
+    }  
+  }
+);
+
 module.exports = router;
