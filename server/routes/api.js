@@ -29,4 +29,12 @@ router.get('/user/:username/:password',
   }
 );
 
+router.delete('/user/:username/:password',
+  byoaController.deleteUser,
+  (req, res) => {
+    res.status(410).json(res.locals.userData)
+  }
+);
+
+
 module.exports = router;
