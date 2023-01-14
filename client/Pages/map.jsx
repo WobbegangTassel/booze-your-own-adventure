@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useJsApiLoader,
+  DirectionsRenderer,
+} from "@react-google-maps/api";
 
 const containerStyle = {
   width: "500px",
@@ -90,12 +94,40 @@ function BarMap({ storyData, location, setLocation }) {
   });
 
   const [map, setMap] = React.useState(null);
+  const [directions, setDirections] = useState(null);
 
   const onLoad = React.useCallback(
     function callback(map) {
       // This is just an example of getting and using the map instance!!! don't just blindly copy!
       const bounds = new window.google.maps.LatLngBounds(center);
       map.fitBounds(bounds);
+
+      const directionsService = new google.maps.DirectionsService();
+
+      if (center) {
+        const origin = center;
+        const destination = {
+          lat: 36.003927161954906,
+          lng: -78.90099979929735,
+        };
+
+        directionsService.route(
+          {
+            origin: origin,
+            destination: destination,
+            travelMode: google.maps.TravelMode.DRIVING,
+            waypoints: [],
+          },
+          (result, status) => {
+            if (status === google.maps.DirectionsStatus.OK) {
+              console.log(result);
+              setDirections(result);
+            } else {
+              console.error(`error fetching directions ${result}`);
+            }
+          }
+        );
+      }
 
       setMap(map);
     },
@@ -116,12 +148,12 @@ function BarMap({ storyData, location, setLocation }) {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={15}
+          zoom={16}
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
           {/* Child components, such as markers, info windows, etc. */}
-          <></>
+          {directions && <DirectionsRenderer directions={directions} />}
         </GoogleMap>
       </div>
 
