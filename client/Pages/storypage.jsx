@@ -61,7 +61,9 @@ function StoryPage({ storyData, setStoryData, setChoice }) {
           {storyData.choice_a}.
         </h3>
 
-        <button className="p-3 flex-shrink-0 self-center my-6 w-96 text-2xl min-w-min font-button text-blue-light rounded-lg bg-brown  hover:bg-brown-light hover:text-brown-dark">
+        <button className="p-3 flex-shrink-0 self-center my-6 w-96 text-2xl min-w-min font-button text-blue-light rounded-lg bg-brown  hover:bg-brown-light hover:text-brown-dark"
+          onClick={()=> {window.location.reload()}}
+        >
           <Link to="/home">Start a new adventure!</Link>
         </button>
         <Outlet />
