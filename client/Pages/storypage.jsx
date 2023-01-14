@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Link, Outlet } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 function StoryPage({ storyData, setStoryData, setChoice }) {
   // console.log({storyData})
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   // let endpoint = "/go";
   //getting id of current story segment from previous page
   // const { id, setId } = useParams()
@@ -17,15 +17,9 @@ function StoryPage({ storyData, setStoryData, setChoice }) {
     await fetch(`/api/story/${storyId}`)
       .then((res) => res.json())
       .then((data) => {
-        const {
-          id,
-          prompt,
-          choice_a,
-          choice_b,
-          choice_a_id,
-          choice_b_id,
-        } = data
-        console.log({ data })
+        const { id, prompt, choice_a, choice_b, choice_a_id, choice_b_id } =
+          data;
+        console.log({ data });
 
         setStoryData({
           id,
@@ -34,41 +28,44 @@ function StoryPage({ storyData, setStoryData, setChoice }) {
           choice_b,
           choice_a_id,
           choice_b_id,
-        })
+        });
       })
-      .catch((err) => console.log('Equipment api fetch ERROR: ', err))
-  }
+      .catch((err) => console.log("Equipment api fetch ERROR: ", err));
+  };
 
   useEffect(() => {
-    updateStory(storyData.id)
-  }, [])
+    updateStory(storyData.id);
+  }, []);
 
   function handleClick(selection_id, selection_text) {
-    updateStory(selection_id)
-    setChoice(selection_text)
-    console.log(selection_text)
+    updateStory(selection_id);
+    setChoice(selection_text);
+    console.log(selection_text);
 
-    navigate('/go')
+    navigate("/go");
   }
 
-  if (storyData.choice_a === 'End of story') {
+  if (storyData.choice_a === "End of story") {
     return (
-      <div className="flex flex-col justify-center align-middle">
-        <p className="self-center justify-center p-2 m-5 flex-shrink-0 text-4xl font-body text-brown-dark">
+      <div className="flex flex-col space-10 rounded-lg h-full w-full border-double border-4 border-brown-dark">
+        <p className="self-center justify-center p-2 m-5 mt-12 flex-shrink-0 text-4xl font-body text-brown-dark">
           {storyData.prompt}
         </p>
         <h3 className="self-center p-2 py-12 font-display text-6xl flex-shrink-0">
           {storyData.choice_a}.
         </h3>
 
-        <button className="p-3 flex-shrink-0 self-center my-6 w-96 text-2xl min-w-min font-button text-blue-light rounded-lg bg-brown  hover:bg-brown-light hover:text-brown-dark"
-          onClick={()=> {window.location.reload()}}
+        <button
+          className="p-3 flex-shrink-0 self-center my-6 w-96 text-2xl min-w-min font-button text-blue-light rounded-lg bg-brown  hover:bg-brown-light hover:text-brown-dark"
+          onClick={() => {
+            window.location.reload();
+          }}
         >
           <Link to="/home">Start a new adventure!</Link>
         </button>
         <Outlet />
       </div>
-    )
+    );
   }
 
   return (
@@ -83,7 +80,7 @@ function StoryPage({ storyData, setStoryData, setChoice }) {
         className="p-3 flex-shrink-0 self-center my-6 w-96 text-2xl min-w-min font-button text-blue-light rounded-lg bg-brown  hover:bg-brown-light hover:text-brown-dark"
         type=""
         onClick={() => {
-          handleClick(storyData.choice_a_id, storyData.choice_a)
+          handleClick(storyData.choice_a_id, storyData.choice_a);
         }}
       >
         {storyData.choice_a}
@@ -92,12 +89,12 @@ function StoryPage({ storyData, setStoryData, setChoice }) {
         className="p-3 flex-shrink-0 self-center my-6 w-96 text-2xl min-w-min font-button text-blue-light rounded-lg bg-brown  hover:bg-brown-light hover:text-brown-dark"
         type=""
         onClick={() => {
-          handleClick(storyData.choice_b_id, storyData.choice_b)
+          handleClick(storyData.choice_b_id, storyData.choice_b);
         }}
       >
         {storyData.choice_b}
       </button>
     </div>
-  )
+  );
 }
-export default StoryPage
+export default StoryPage;
