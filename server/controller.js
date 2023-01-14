@@ -1,4 +1,5 @@
-const db = require("./model");
+const { resolve } = require('../webpack.common');
+const db = require('./model');
 
 const byoaController = {};
 
@@ -38,5 +39,42 @@ byoaController.getStoryData = (req, res, next) => {
       });
     });
 };
+
+byoaController.addUser = (req, res, next) =>{
+  const sqlQuery = `INSERT INTO users(username, password) VALUES ('${req.params.username}', '${req.params.password}') RETURNING *;`;
+
+  db.query(sqlQuery).then(sqlRes => {
+    console.log('Query response: ', sqlRes.rows );
+    res.locals.userData = sqlRes.rows[0];
+    return next();
+  })
+  .catch(e => {
+    next({
+        log: 'byoaController.addUser error: ' + e,
+        message: {err: 'Failed to add User, see server logs'} 
+    });
+  });
+};
+
+byoaController.confirmUser = (req, res, next) =>{
+  const sqlQuery = `SELECT id FROM users WHERE username='${req.params.username}' 
+  AND password='${req.params.password}';`
+
+  db.query(sqlQuery).then(sqlRes => {
+    console.log('Query response: ', sqlRes.rows );
+    res.locals.userData = sqlRes.rows[0];
+    return next();
+  })
+  .catch(e => {
+    next({
+      log: 'byoaController.confirmUser error: ' + e,
+      message: {err: 'Failed to confirm User and password, see server logs'} 
+    });
+  });
+};
+
+// byoaController.updateSessionData = (req, res, next) =>{
+//   const sqlQuery = `UPDATE users SET session_data = '${req.params.sessionData}' WHERE  `
+// }
 
 module.exports = byoaController;
