@@ -146,7 +146,7 @@ function BarMap({ storyData, location, setLocation }) {
   return isLoaded && location ? ( //change to center if using geolocation API
     <div className="flex flex-col justify-center align-middle m-12">
       <p className="self-center justify-center p-2 m-5 flex-shrink-0 text-4xl font-body text-brown-dark">
-        You are looking at a map!
+        Let's walk to {bars[index].name}!
       </p>
       <div className="self-center">
         <GoogleMap
